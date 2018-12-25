@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup } from 'reactstrap';
+import { Button } from 'reactstrap';
+import './clicker.css';
 
 class Clicker extends Component {
     constructor(props){
@@ -30,23 +31,16 @@ class Clicker extends Component {
 
   render() {
     return (
-        <div style={style_container}>
+        <div class="container">
             <h1>{this.state.value}</h1>
-            <Button outline color="success" onClick={this.addOne}>+</Button>
-            <Button outline color="warning" onClick={this.reset}>reset</Button>
-            <Button outline color="danger" onClick={this.subtractOne}>-</Button>
+            <div>
+                <Button outline color="success" onClick={this.addOne}>+</Button>
+                <Button outline color="warning" onClick={this.reset}>reset</Button>
+                <Button outline color="danger" onClick={this.subtractOne}>-</Button>
+            </div>
         </div>
     );
   }
-}
-
-const style_container = {
-    align: 'center',
-    color: 'white',
-    background: 'black',
-    width: '50%',
-    height: '50%',
-    padding: '30',
 }
 
 export default Clicker;
