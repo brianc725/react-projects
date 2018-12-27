@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Card from './card';
+import CardSingle from './card';
+import { Container, Row, Col } from 'reactstrap';
 
 const movies = [
     {"Title":"Despicable Me","Year":"2010","Rated":"PG","Released":"09 Jul 2010","Runtime":"95 min","Genre":"Animation, Comedy, Family, Fantasy","Director":"Pierre Coffin, Chris Renaud","Writer":"Cinco Paul (screenplay by), Ken Daurio (screenplay by), Sergio Pablos (based on a story by)","Actors":"Steve Carell, Jason Segel, Russell Brand, Julie Andrews","Plot":"When a criminal mastermind uses a trio of orphan girls as pawns for a grand scheme, he finds their love is profoundly changing him for the better.","Language":"English","Country":"USA, France","Awards":"Nominated for 1 Golden Globe. Another 3 wins & 40 nominations.","Poster":"https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"7.7/10"},{"Source":"Rotten Tomatoes","Value":"81%"},{"Source":"Metacritic","Value":"72/100"}],"Metascore":"72","imdbRating":"7.7","imdbVotes":"449,858","imdbID":"tt1323594","Type":"movie","DVD":"14 Dec 2010","BoxOffice":"$251,476,985","Production":"Universal Pictures","Website":"http://www.despicable.me","Response":"True"},
@@ -8,6 +9,8 @@ const movies = [
     {"Title":"Air Bud","Year":"1997","Rated":"PG","Released":"01 Aug 1997","Runtime":"98 min","Genre":"Comedy, Drama, Family, Sport","Director":"Charles Martin Smith","Writer":"Kevin DiCicco (character \"Air Bud\"), Paul Tamasy, Aaron Mendelsohn","Actors":"Michael Jeter, Kevin Zegers, Wendy Makkena, Bill Cobbs","Plot":"A young boy and a talented stray dog with an amazing basketball playing ability become instant friends. Rebounding from his father's accidental death, 12-year-old Josh Framm moves with his ...","Language":"English","Country":"USA, Canada","Awards":"3 wins & 3 nominations.","Poster":"https://m.media-amazon.com/images/M/MV5BMzQxODE4MzEyNF5BMl5BanBnXkFtZTgwNjk2OTY4ODE@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"5.2/10"},{"Source":"Rotten Tomatoes","Value":"45%"}],"Metascore":"N/A","imdbRating":"5.2","imdbVotes":"14,769","imdbID":"tt0118570","Type":"movie","DVD":"03 Feb 1998","BoxOffice":"N/A","Production":"Keystone Pictures","Website":"N/A","Response":"True"},
     {"Title":"The Incredibles","Year":"2004","Rated":"PG","Released":"05 Nov 2004","Runtime":"115 min","Genre":"Animation, Action, Adventure, Family","Director":"Brad Bird","Writer":"Brad Bird","Actors":"Craig T. Nelson, Holly Hunter, Samuel L. Jackson, Jason Lee","Plot":"A family of undercover superheroes, while trying to live the quiet suburban life, are forced into action to save the world.","Language":"English, French","Country":"USA","Awards":"Won 2 Oscars. Another 65 wins & 55 nominations.","Poster":"https://m.media-amazon.com/images/M/MV5BMTY5OTU0OTc2NV5BMl5BanBnXkFtZTcwMzU4MDcyMQ@@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"8.0/10"},{"Source":"Metacritic","Value":"90/100"}],"Metascore":"90","imdbRating":"8.0","imdbVotes":"574,563","imdbID":"tt0317705","Type":"movie","DVD":"29 Mar 2005","BoxOffice":"N/A","Production":"N/A","Website":"N/A","Response":"True"},
     {"Title":"Incredibles 2","Year":"2018","Rated":"PG","Released":"15 Jun 2018","Runtime":"118 min","Genre":"Animation, Action, Adventure, Comedy, Family, Sci-Fi","Director":"Brad Bird","Writer":"Brad Bird","Actors":"Craig T. Nelson, Holly Hunter, Sarah Vowell, Huck Milner","Plot":"Bob Parr (Mr. Incredible) is left to care for the kids while Helen (Elastigirl) is out saving the world.","Language":"English","Country":"USA","Awards":"N/A","Poster":"https://m.media-amazon.com/images/M/MV5BMTEzNzY0OTg0NTdeQTJeQWpwZ15BbWU4MDU3OTg3MjUz._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"7.9/10"},{"Source":"Rotten Tomatoes","Value":"94%"},{"Source":"Metacritic","Value":"80/100"}],"Metascore":"80","imdbRating":"7.9","imdbVotes":"143,960","imdbID":"tt3606756","Type":"movie","DVD":"23 Oct 2018","BoxOffice":"N/A","Production":"Disney/Pixar","Website":"http://movies.disney.com/the-incredibles-2","Response":"True"},
+    {"Title":"Top Gun","Year":"1986","Rated":"PG","Released":"16 May 1986","Runtime":"110 min","Genre":"Action, Drama","Director":"Tony Scott","Writer":"Jim Cash, Jack Epps Jr., Ehud Yonay (magazine article \"Top Guns\")","Actors":"Tom Cruise, Kelly McGillis, Val Kilmer, Anthony Edwards","Plot":"As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom.","Language":"English","Country":"USA","Awards":"Won 1 Oscar. Another 10 wins & 5 nominations.","Poster":"https://m.media-amazon.com/images/M/MV5BZjQxYTA3ODItNzgxMy00N2Y2LWJlZGMtMTRlM2JkZjI1ZDhhXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"6.9/10"},{"Source":"Rotten Tomatoes","Value":"54%"},{"Source":"Metacritic","Value":"50/100"}],"Metascore":"50","imdbRating":"6.9","imdbVotes":"253,941","imdbID":"tt0092099","Type":"movie","DVD":"20 Oct 1998","BoxOffice":"N/A","Production":"Paramount Pictures","Website":"http://www.imax.com/movies/m/top-gun-an-imax-3d-experience/","Response":"True"},
+    {"Title":"Avengers: Infinity War","Year":"2018","Rated":"PG-13","Released":"27 Apr 2018","Runtime":"149 min","Genre":"Action, Adventure, Fantasy, Sci-Fi","Director":"Anthony Russo, Joe Russo","Writer":"Christopher Markus (screenplay by), Stephen McFeely (screenplay by), Stan Lee (based on the Marvel comics by), Jack Kirby (based on the Marvel comics by), Joe Simon (Captain America created by), Jack Kirby (Captain America created by), Steve Englehart (Star-Lord created by), Steve Gan (Star-Lord created by), Bill Mantlo (Rocket Raccoon created by), Keith Giffen (Rocket Raccoon created by), Jim Starlin (Thanos, Gamora and Drax created by), Stan Lee (Groot created by), Larry Lieber (Groot created by), Jack Kirby (Groot created by), Steve Englehart (Mantis created by), Don Heck (Mantis created by)","Actors":"Robert Downey Jr., Chris Hemsworth, Mark Ruffalo, Chris Evans","Plot":"The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.","Language":"English","Country":"USA","Awards":"N/A","Poster":"https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"8.5/10"},{"Source":"Rotten Tomatoes","Value":"84%"},{"Source":"Metacritic","Value":"68/100"}],"Metascore":"68","imdbRating":"8.5","imdbVotes":"525,758","imdbID":"tt4154756","Type":"movie","DVD":"14 Aug 2018","BoxOffice":"$664,987,816","Production":"Walt Disney Pictures","Website":"http://marvel.com/movies/movie/223/avengers_infinity_war","Response":"True"},
 ]
 
 class Cards extends Component {
@@ -18,11 +21,18 @@ class Cards extends Component {
         };
     }
     render() {
+        let movieCards = this.state.movies.map(m => {
+            return(
+                <Col md="4">
+                    <CardSingle key={m.imdbID} Title={m.Title} Plot={m.Plot} Rated={m.Rated} Year={m.Year} Genre={m.Genre} imdbRating={m.imdbRating} Poster={m.Poster}/>
+                </Col>
+            )});
         return (
-            <div>
-                {/* Generate a card for each of the movies in the array, passing in the props needed */}
-                {this.state.movies.map(m => <Card key={m.imdbID} Title={m.Title}/>)}
-            </div>
+            <Container fluid>
+                <Row>
+                    {movieCards}
+                </Row>
+            </Container>
         );
   }
 }

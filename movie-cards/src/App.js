@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div>
         <Header/>
-        <div className="cards-layout">
+        <div className="body-layout">
           <Cards/>
         </div>
       </div>
