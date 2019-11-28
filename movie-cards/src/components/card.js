@@ -6,7 +6,7 @@ class CardSingle extends Component {
   render() {
     return (
         <div>
-            <Card>
+            <Card style={{'min-height': '100vh' }}>
                 <CardImg top width="100%" src={this.props.Poster} alt="Movie poster image" />
                 <CardBody>
                     <CardTitle>{this.props.Title}</CardTitle>

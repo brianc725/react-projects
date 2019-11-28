@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CardSingle from './card';
-import { Container, Row, Col } from 'reactstrap';
+import '../App.css';
 
 const movies = [
     {"Title":"Despicable Me","Year":"2010","Rated":"PG","Released":"09 Jul 2010","Runtime":"95 min","Genre":"Animation, Comedy, Family, Fantasy","Director":"Pierre Coffin, Chris Renaud","Writer":"Cinco Paul (screenplay by), Ken Daurio (screenplay by), Sergio Pablos (based on a story by)","Actors":"Steve Carell, Jason Segel, Russell Brand, Julie Andrews","Plot":"When a criminal mastermind uses a trio of orphan girls as pawns for a grand scheme, he finds their love is profoundly changing him for the better.","Language":"English","Country":"USA, France","Awards":"Nominated for 1 Golden Globe. Another 3 wins & 40 nominations.","Poster":"https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"7.7/10"},{"Source":"Rotten Tomatoes","Value":"81%"},{"Source":"Metacritic","Value":"72/100"}],"Metascore":"72","imdbRating":"7.7","imdbVotes":"449,858","imdbID":"tt1323594","Type":"movie","DVD":"14 Dec 2010","BoxOffice":"$251,476,985","Production":"Universal Pictures","Website":"http://www.despicable.me","Response":"True"},
@@ -23,16 +23,16 @@ class Cards extends Component {
     render() {
         let movieCards = this.state.movies.map(m => {
             return(
-                <Col md="4">
+                <div className="col-md-4" >
                     <CardSingle key={m.imdbID} Title={m.Title} Plot={m.Plot} Rated={m.Rated} Year={m.Year} Genre={m.Genre} imdbRating={m.imdbRating} Poster={m.Poster}/>
-                </Col>
+                </div>
             )});
         return (
-            <Container fluid>
-                <Row>
+            <div class="container">
+                <div className="equal-height">
                     {movieCards}
-                </Row>
-            </Container>
+                </div>
+            </div>
         );
   }
 }
